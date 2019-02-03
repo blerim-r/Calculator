@@ -23,7 +23,7 @@ body , html {
     justify-content: space-around;
     padding-top: 10px;
 }
-.input {
+#calcInput {
     width: 100%;
     height: 35px;
     background: black;
@@ -58,7 +58,7 @@ body , html {
 }
 .btn-imadh-in-div {
     width: 115px;
-border-radius:50%;
+    border-radius: 40px;
 }
 .bck-orng {
     background-color: orange;
@@ -67,7 +67,7 @@ border-radius:50%;
     background-color: #a9a4a4;
     color: black;
 }
-.input:focus {
+#calcInput:focus {
     outline: -webkit-focus-ring-color auto 0px;
 }
 .button button:focus{

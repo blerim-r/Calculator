@@ -1,10 +1,10 @@
 var nr1 = null;
 var shenja = null;
 var nr2 = null;
-
+var calcInput = $('#calcInput');
 
 $("#clean-input").click(function () {
-   $(".input").val(" ");
+   calcInput.val(" ");
    $(".active").removeClass("active");
    nr1 = null;
    shenja = null;
@@ -14,68 +14,54 @@ $("#clean-input").click(function () {
 $(".digit").click(function () {
     if (nr1 == null && shenja == null && nr2 == null){
         nr1 = $(this).text();
-        $(".input").val(nr1);
+        calcInput.val(nr1);
     }
     else if (nr1 != null && shenja == null && nr2 == null){
-        nr1 = $(".input").val() + $(this).text();
-        $(".input").val(nr1);
+        nr1 = calcInput.val() + $(this).text();
+        calcInput.val(nr1);
     }else if (nr1 != null && shenja != null && nr2 == null){
         nr2 = $(this).text();
-        $(".input").val(nr2);
+        calcInput.val(nr2);
         $(".active").removeClass("active");
     }
     else if (nr1 != null && shenja != null && nr2 != null){
-        nr2 = $(".input").val() + $(this).text();
-        $(".input").val(nr2);
+        nr2 = calcInput.val() + $(this).text();
+        calcInput.val(nr2);
     }
 });
 
 $(".sign").click(function () {
    if (nr1 == null && shenja == null && nr2 == null){
-       alert("errore");
+       alert("Error");
    }
    else if (nr1 != null && shenja == null && nr2 == null){
        shenja = $(this).text();
        $(this).addClass("active");
    }
    else if (nr1 != null && shenja != null && nr2 == null){
-       alert("errore");
+       alert("Error");
    }
    else if (nr1 != null && shenja != null && nr2 != null){
        nr1 = veprim(parseFloat(nr1) , shenja , parseFloat(nr2));
        shenja = $(this).text();
        $(this).addClass("active");
        nr2 = null;
-       $(".input").val();
+       calcInput.val();
    }
 });
 
 $("#barazim").click(function () {
    shuma = veprim(parseFloat(nr1) , shenja , parseFloat(nr2));
-   $(".input").val(shuma);
+   calcInput.val(shuma);
 });
 
 $("#comma").click(function () {
-    var inptText = $(".input").val();
+    var inptText = calcInput.val();
     if (inptText.length > 0 && inptText.indexOf(".") === -1){
-        $(".input").val(inptText + "." );
+        calcInput.val(inptText + "." );
     }else {
-        alert("errore");
+        alert("Error");
     }
-   // if (nr1 == null && shenja == null && nr2 == null){
-   //     alert("errore");
-   // }
-   // else if (nr1 != null && shenja == null && nr2 == null){
-   //    nr1 = $(".input").val() + $(this).text();
-   //    $(".input").val(nr1);
-   // }
-   // else if (nr1 != null && shenja != null && nr2 == null){
-   //     alert("errore");
-   //  }
-   //  else if (nr1 != null && shenja != null && nr2 != null){
-   //     nr2 = $(".input").val() + $(this).text();
-   //     $(".input").val(nr2);
-   //  }
 });
 
 function veprim(nr1 , shenja , nr2) {
